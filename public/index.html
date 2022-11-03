@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <input type="text" id="operation" placeholder="operation" />
+    <input type="text" id="x" placeholder="x" />
+    <input type="text" id="y" placeholder="y" />
+    <button type="submit" onclick="onSubmit()">submit</button>
+
+    <script>
+      const operation_type = document.getElementById("operation");
+      const initX = document.getElementById("x");
+      const initY = document.getElementById("y");
+
+      const x = parseInt(initX);
+      const y = parseInt(initY);
+
+      const body = {
+        operation_type,
+        x,
+        y,
+      };
+      let options = {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json;charset=utf-8",
+        },
+        body: JSON.stringify(body),
+      };
+      const onSubmit = () => {
+        fetch("/calculate", options)
+          .then((res) => res.json())
+          .then((resp) => console.log(resp));
+      };
+    </script>
+  </body>
+</html>
