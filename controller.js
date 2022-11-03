@@ -7,21 +7,27 @@ const performArithemetic = (req, res) => {
     res.status(400).json({ msg: "all inputs are required" });
   }
   const lowerOperationType = operation_type.toLowerCase();
-
-  const possible_type = "addition" || "substraction" || "multiplication";
-
-  if (lowerOperationType !== possible_type) {
+  console.log(lowerOperationType);
+  const typeArray = ["addition", "substraction", "multiplication"];
+  const check = typeArray.indexOf(lowerOperationType);
+  console.log(check);
+  if (check === -1) {
     res.status(400).json({ msg: "The operation type entered is void" });
   }
 
-  if (!Number.isInteger(x) || !Number.isInteger(x)) {
+  if (!Number.isInteger(x) || !Number.isInteger(y)) {
     res.status(400).json({ msg: "x or y must be an integer" });
   }
-  let result = runFunction(operation_type, x, y);
-  res.status(200).json({
+  let result = runFunction(lowerOperationType, x, y);
+  console.log({
     slackUsername: "Ralph",
     result,
     operation_type,
+  });
+  res.status(200).json({
+    slackUsername: "Ralph",
+    result,
+    operation_type: lowerOperationType,
   });
 };
 
