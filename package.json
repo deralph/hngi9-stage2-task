@@ -1,10 +1,10 @@
 {
-  "name": "jobs",
+  "name": "hngi9task",
   "version": "1.0.0",
-  "description": "",
-  "main": "app.js",
+  "description": "this is the solution to the hngi9 stage1 task",
+  "main": "server.js",
   "scripts": {
-    "start": "nodemon server.js"
+    "start": "node server.js"
   },
   "keywords": [],
   "author": "john raphael",
